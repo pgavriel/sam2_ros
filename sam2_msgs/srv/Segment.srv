@@ -1,0 +1,8 @@
+# Request
+sensor_msgs/Image image
+uint8 mode              # 0=points, 1=boxes, 2=full(not implemented)
+geometry_msgs/Point[] points
+sam2_msgs/BoundingBox[] boxes
+---
+# Response
+sensor_msgs/Image mask
