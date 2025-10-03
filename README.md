@@ -1,5 +1,5 @@
 # SAM2 x ROS2   
-This package contains ROS2 packages for utilizing Metas SAM2 model as a service call.  
+This package contains ROS2 packages for utilizing [Meta's SAM2](https://github.com/facebookresearch/sam2) model as a service call.  
 Additionally, this package contains a Dockerfile which builds a container solely responsible for hosting a SAM2 service node. The docker image uses a ROS2 Jazzy image.  
   
 ## Setup  
@@ -13,7 +13,7 @@ chmod +x run_container.sh
 ```  
   
 ### Using a local ROS2 Workspace  
-1. Clone the (SAM2 github repository)[https://github.com/facebookresearch/sam2], and follow the instructions for installing dependencies and downloading model checkpoints.  
+1. Clone the [SAM2 github repository](https://github.com/facebookresearch/sam2), and follow the instructions for installing dependencies and downloading model checkpoints.  
 ```  
 git clone https://github.com/facebookresearch/sam2.git && cd sam2  
 pip install -e .  
@@ -21,6 +21,8 @@ cd checkpoints && ./download_ckpts.sh && cd ..
 ```  
 2. Clone this repository into your ROS workspace.  
 ```  
+cd ros_ws/src  
+git clone https://github.com/pgavriel/sam2_ros.git  
 ```     
 3. Edit the SAM2_DIR on line 15 of server_node.py (sam2_server/sam2_server/server_node.py) to be the full local filepath of wherever SAM2 was cloned.    
   
@@ -34,5 +36,5 @@ The server node then hosts a service named '/segment' which accepts an input ima
   
 For example usage of service calls within a python script, check out this script (which can also be run directly to test the functionality of the service):  
 ```  
-sam2_server/test/sam_service_test.py   
+python3 sam2_ros/sam2_server/test/sam_service_test.py   
 ```    
